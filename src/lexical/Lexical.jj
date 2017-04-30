@@ -1,0 +1,76 @@
+/**
+ * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
+ */options{  static = true;}PARSER_BEGIN(Lexical)package lexical;
+
+public class Lexical{  public static void main(String args []) throws ParseException  {     Lexical parser = new Lexical(System.in);
+    System.out.println("Reading from standard input...");
+    while (true)
+    {
+       Token token= new Token();
+       token =parser.getNextToken();
+       System.out.println(token.kind+" "+token.image);
+    }  }}PARSER_END(Lexical)SKIP :{  " "| "\r"| "\t"| "\n"}
+TOKEN : /* KEYWORDS */
+{
+  < IF : "if" >
+| < ELSE : "else" >
+| < FOR : "for" >
+| < FALSE : "false" >
+| < TRUE : "true" >
+| < DO : "do" >
+| < IMPORT : "import" >
+| < IMPLEMENTS : "implements" >
+| < EXTENDS : "extends" >
+| < PUBLIC : "public" >
+| < PROTECTED : "protected" >
+| < PRIVATE : "private" >
+| < ASTRACTE : "abstract" >
+| < NATIVE : "native" >
+| < PACKAGE : "package" >
+| < STATIC : "static" >
+| < WHILE : "while" >
+| < MAIN : "main" >
+| < Byte : "byte" >
+| < Short : "short" >
+| < INT : "int" >
+| < FLOAT : "float" >
+| < DOUBLE : "double" >
+| < LONG : "long" >
+| < STRING : "String" >
+| < CHAR : "char" >
+| < VOID : "void" >
+| < RETURN : "return" >
+}TOKEN : /* OPERATORS */{  < PLUS : "+" >| < MINUS : "-" >| < MULTIPLY : "*" >| < DIVIDE : "/" >
+| < QUYU   : "%" >
+| < DAYU : ">" >
+| < XIAOYU : "<" >
+| < DENGYU : "=" >
+}
+TOKEN: /* SEPARATER*/
+{
+  < FH : ";" >
+| < DH : "," >
+| < ZDKH : "{" >
+| < YDKH : "}" >
+| < ZZKH: "[" >
+| < YZKH : "]" >
+| < ZXKH: "(" >
+| < YXKH : ")" >
+}
+TOKEN:/*IDENTIFIER*/
+{
+  < IDENTIFIER :
+  < LETTER >
+  (
+    < LETTER >
+  | < DIGIT >
+)* >
+
+| < #LETTER :["_","a"-"z","A"-"Z"] >
+
+}
+TOKEN : /*CONSTANT*/
+{
+  < CONSTANT : (< DIGIT >)+ >
+| < #DIGIT : [ "0"-"9" ] >
+}int one_line() :{}{  sum() ";"  {    return 0;  }| ";"  {    return 1;  }}void sum() :{}{  term()  (    (      < PLUS >    | < MINUS >    )    term()  )*}void term() :{}{  unary()  (    (      < MULTIPLY >    | < DIVIDE >    )    unary()  )*}void unary() :{}{  < MINUS > element()| element()}void element() :{}{  < CONSTANT >| "(" sum() ")"}

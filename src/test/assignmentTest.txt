@@ -1,0 +1,11 @@
+
+
+void main(){
+	int a,b,c,d;
+	a=0;
+	d=0;
+	b=3;
+	c=3;
+	a = b + c;
+	d = b * c;
+}

@@ -1,0 +1,9 @@
+
+
+void main(){
+	int a, b, c, x, y;
+	while (a < 90)
+	{
+		a = a + 1;
+	}
+}

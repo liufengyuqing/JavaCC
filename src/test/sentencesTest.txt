@@ -1,0 +1,16 @@
+
+
+void main(){
+	int a, b, c;
+	
+    if (a > b+c)
+    {
+        a = b-c;
+    }
+    else 
+    {
+        c = 0;
+    }
+}
+
+
